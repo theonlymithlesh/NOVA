@@ -724,14 +724,8 @@
     /* ---------- Responsive layout ---------- */
     @media (min-width: 900px) {
       .hero { padding-top: 56px; }
-      .hero__grid { grid-template-columns: 7fr 5fr; gap: 64px; }
-      .about__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
-      .about__media { order: -1; }
-    }
-    @media (min-width: 1024px) {
-      .hero__grid { grid-template-columns: 7fr 5fr; }
-      .hero__visual { padding: 32px 24px; }
-      .about__media { order: 0; }
+      .hero__grid { grid-template-columns: 1fr; max-width: 760px; }
+      .about__grid { grid-template-columns: 1fr; max-width: 760px; }
     }
 
     /* Phone-sized tweaks */
@@ -769,8 +763,7 @@
     .float-cta:hover { background: #003a9e; color: #fff; text-decoration: none; }
     .float-cta .icon { width: 18px; height: 18px; }
     @media (max-width: 380px) {
-      .float-cta { padding: 12px 16px; font-size: 14px; }
-      .float-cta__label { display: none; }
+      .float-cta { padding: 12px 16px; font-size: 14px; gap: 6px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -865,34 +858,6 @@
           </ul>
         </div>
 
-        <div class="hero__visual">
-          <div class="hero__image">
-            <img src="assets/hero.jpg" alt="A NOVA career strategist reviewing a resume with a client" width="479" height="599" fetchpriority="high">
-            <span class="image-badge">
-              <svg class="icon icon--xs" aria-hidden="true"><use href="#i-compass"/></svg>
-              Executive Strategy Studio
-            </span>
-          </div>
-
-          <div class="float-card float-card--top" aria-label="ATS score 94 out of 100">
-            <div class="float-card__row">
-              <span class="float-card__label">ATS optimized</span>
-            </div>
-            <div class="float-card__value" style="margin-top:6px">94<small>/100</small></div>
-            <div class="meter" aria-hidden="true"><span></span></div>
-            <div class="float-card__note">Score benchmark: Top 3%</div>
-          </div>
-
-          <div class="float-card float-card--bottom">
-            <div class="float-card__icon" aria-hidden="true">
-              <svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg>
-            </div>
-            <div>
-              <div class="float-card__stat">3.4x interview callbacks</div>
-              <div class="float-card__sub">Average across 850+ candidates</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -922,19 +887,6 @@
           </div>
         </div>
 
-        <div class="about__media">
-          <div class="about__image">
-            <img src="assets/about.jpg" alt="A NOVA mentorship session in progress" width="580" height="435" loading="lazy">
-          </div>
-          <div class="about__caption">
-            <span>Mentorship session at our Mumbai studio</span>
-            <span class="tag">In-person &amp; virtual</span>
-          </div>
-          <div class="stat-card" aria-hidden="false">
-            <div class="stat-card__value">10+ Years</div>
-            <div class="stat-card__label">Industry mentorship depth</div>
-          </div>
-        </div>
       </div>
     </section>
 
