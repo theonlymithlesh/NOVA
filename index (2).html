@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NOVA Career Studio | Resumes, LinkedIn and Interview Preparation</title>
+  <meta name="description" content="Resume makeovers, LinkedIn optimization, interview preparation and career clarity sessions from NOVA Career Studio.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Tokens (taken from the Figma file) ---------- */
+    :root {
+      --bg: #f9f9ff;
+      --surface: #ffffff;
+      --tint: #f1f3ff;
+      --tint-2: #e9edff;
+      --tint-3: #dbe1ff;
+      --tint-4: #e1e8fd;
+      --ink: #141b2b;
+      --ink-2: #434655;
+      --ink-3: #516070;
+      --accent: #004ac6;
+      --accent-bright: #2563eb;
+      --accent-ink: #00174b;
+      --line: #dde2f2;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-card: 0 1px 2px rgba(20, 27, 43, 0.05);
+      --shadow-float: 0 8px 24px -8px rgba(20, 27, 43, 0.18);
+      --font-head: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --nav-h: 72px;
+      --gutter: 20px;
+      --section-y: 64px;
+    }
+
+    @media (min-width: 768px) {
+      :root { --gutter: 32px; --section-y: 96px; }
+    }
+    @media (min-width: 1024px) {
+      :root { --gutter: 48px; --section-y: 128px; --nav-h: 80px; }
+    }
+
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.625;
+      color: var(--ink-2);
+      background: var(--bg);
+      overflow-x: clip;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    h1, h2, h3, p { margin: 0; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    section[id] { scroll-margin-top: var(--nav-h); }
+
+    :focus-visible {
+      outline: 3px solid var(--accent-bright);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+
+    .icon { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+    .icon--sm { width: 16px; height: 16px; }
+    .icon--xs { width: 14px; height: 14px; stroke-width: 2; }
+
+    .wrap {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+
+    .section { padding-top: var(--section-y); padding-bottom: var(--section-y); }
+    .section--tint { background: var(--tint); }
+
+    /* ---------- Type ---------- */
+    .eyebrow {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .h1, .h2, .h3 { font-family: var(--font-head); color: var(--ink); }
+    .h1 {
+      font-weight: 700;
+      font-size: clamp(40px, 7vw, 56px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+    .h1 .accent { color: var(--accent-bright); display: block; }
+    .h2 {
+      font-weight: 600;
+      font-size: clamp(32px, 4.6vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .h3 {
+      font-weight: 600;
+      font-size: clamp(22px, 2.4vw, 28px);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .lead {
+      font-size: clamp(17px, 2vw, 18px);
+      line-height: 1.6;
+      color: var(--ink-2);
+    }
+    .section-head { display: grid; gap: 16px; max-width: 672px; }
+    .section-head--center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-head--center .eyebrow { margin-bottom: 0; }
+
+    /* ---------- Buttons and links ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 24px;
+      border: 0;
+      border-radius: var(--radius-md);
+      font: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.2;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color .2s ease, color .2s ease, transform .2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn:active { transform: translateY(1px); }
+    .btn--primary { background: var(--accent); color: #fff; }
+    .btn--primary:hover { background: #003a9e; }
+    .btn--secondary { background: var(--surface); color: var(--ink); box-shadow: var(--shadow-card); }
+    .btn--secondary:hover { background: var(--tint-4); }
+    .btn--tint { background: var(--tint-4); color: var(--ink); }
+    .btn--tint:hover { background: var(--tint-3); }
+    .btn--block { width: 100%; }
+    .btn:disabled { opacity: .6; cursor: progress; }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .text-link .icon { transition: transform .2s ease; }
+    .text-link:hover .icon { transform: translateX(3px); }
+
+    /* ---------- Navigation ---------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--nav-h);
+      background: rgba(249, 249, 255, 0.96);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease;
+    }
+    .site-header.is-scrolled { border-bottom-color: var(--line); }
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.01em;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand__mark {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+    }
+    .brand__sub { font-weight: 500; color: var(--ink-3); }
+    .nav__links { display: none; align-items: center; gap: 32px; }
+    .nav__links a { color: var(--ink-2); font-size: 15px; font-weight: 500; }
+    .nav__links a:hover { color: var(--ink); text-decoration: none; }
+    .nav__cta { display: none; }
+    .nav__toggle {
+      width: 44px; height: 44px;
+      margin-right: -10px;
+      display: grid; place-items: center;
+      border: 0; background: transparent;
+      color: var(--ink);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+    .nav__panel {
+      display: none;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-float);
+      padding: 8px var(--gutter) 24px;
+    }
+    .nav__panel.is-open { display: block; }
+    .nav__panel a {
+      display: flex;
+      align-items: center;
+      min-height: 52px;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 500;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav__panel a:last-of-type { border-bottom: 0; }
+    .nav__panel .btn { margin-top: 16px; width: 100%; color: #fff; }
+    .nav__panel .btn:hover { color: #fff; }
+
+    @media (min-width: 900px) {
+      .nav__links { display: flex; }
+      .nav__cta { display: inline-flex; min-height: 44px; padding: 10px 20px; }
+      .nav__toggle { display: none; }
+      .nav__panel { display: none !important; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero { padding-top: 40px; padding-bottom: 80px; }
+    .hero__grid {
+      display: grid;
+      gap: 56px;
+      align-items: center;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--tint-4);
+      color: var(--ink-3);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .pill__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-bright); }
+    .hero__copy { display: grid; gap: 20px; }
+    .hero__headline { display: grid; gap: 12px; }
+    .hero__support {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: clamp(18px, 2.2vw, 20px);
+      color: var(--ink);
+      line-height: 1.4;
+    }
+    .hero__desc { max-width: 540px; font-size: clamp(17px, 2vw, 18px); line-height: 1.6; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .checklist { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 4px; }
+    .checklist li { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+    .checklist .icon { color: var(--accent); }
+
+    .hero__visual { position: relative; padding: 24px 0; }
+    .hero__image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--tint-3);
+    }
+    .hero__image img { width: 100%; height: 100%; object-fit: cover; }
+    .image-badge {
+      position: absolute;
+      left: 16px; top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .float-card {
+      position: absolute;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-float);
+      padding: 16px;
+      border: 1px solid var(--line);
+    }
+    .float-card--top {
+      top: 0;
+      right: 0;
+      width: min(220px, 62%);
+    }
+    .float-card--bottom {
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: min(290px, 88%);
+    }
+    .float-card__row { display: flex; justify-content: space-between; align-items: center; }
+    .float-card__label { font-size: 13px; font-weight: 600; color: var(--ink-3); }
+    .float-card__value { font-family: var(--font-head); font-weight: 700; font-size: 22px; color: var(--ink); }
+    .float-card__value small { font-size: 13px; font-weight: 600; color: var(--ink-3); margin-left: 2px; }
+    .meter { height: 8px; border-radius: 999px; background: var(--tint-4); overflow: hidden; margin: 12px 0 10px; }
+    .meter span { display: block; height: 100%; width: 94%; background: var(--accent-bright); border-radius: 999px; }
+    .float-card__note { font-size: 12px; color: var(--ink-3); }
+    .float-card__icon {
+      width: 44px; height: 44px; flex: none;
+      border-radius: var(--radius-sm);
+      background: var(--tint-3);
+      color: var(--accent);
+      display: grid; place-items: center;
+    }
+    .float-card__stat { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.3; }
+    .float-card__sub { font-size: 12px; color: var(--ink-3); line-height: 1.4; }
+
+    /* ---------- About ---------- */
+    .about__grid { display: grid; gap: 48px; align-items: center; }
+    .about__copy { display: grid; gap: 20px; }
+    .about__tagline {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--accent);
+    }
+    .about__copy p + p { margin-top: 0; }
+    .about__copy .body { display: grid; gap: 16px; }
+    .about__closing { font-weight: 600; color: var(--ink); }
+    .founder {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+    }
+    .founder__avatar {
+      width: 48px; height: 48px; flex: none;
+      border-radius: 50%;
+      background: var(--tint-3);
+      color: var(--accent);
+      display: grid; place-items: center;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .founder__name { font-family: var(--font-head); font-weight: 700; font-size: 18px; color: var(--ink); line-height: 1.3; }
+    .founder__role { font-size: 13px; color: var(--ink-3); }
+
+    .about__media { position: relative; }
+    .about__image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--tint-3);
+      aspect-ratio: 4 / 3;
+    }
+    .about__image img { width: 100%; height: 100%; object-fit: cover; }
+    .about__caption {
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 0 4px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--tint-2);
+      color: var(--ink-3);
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .stat-card {
+      position: absolute;
+      right: 16px;
+      bottom: -20px;
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-float);
+    }
+    .stat-card__value { font-family: var(--font-head); font-weight: 700; font-size: 22px; color: var(--tint-3); line-height: 1.2; }
+    .stat-card__label { font-size: 13px; color: var(--tint-4); }
+
+    /* ---------- Services ---------- */
+    .services__head { display: grid; gap: 16px; }
+    .services__grid {
+      margin-top: 48px;
+      display: grid;
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      height: 100%;
+    }
+    .card__top { display: flex; align-items: center; justify-content: space-between; }
+    .icon-tile {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--tint-3);
+      color: var(--accent);
+      display: grid; place-items: center;
+    }
+    .index {
+      font-family: var(--font-head);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink-3);
+      font-variant-numeric: tabular-nums;
+    }
+    .card__body { display: grid; gap: 12px; }
+    .card__body p { color: var(--ink-2); }
+    .card__foot {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+    .card__note { font-size: 13px; font-weight: 500; color: var(--ink-3); }
+
+    @media (min-width: 768px) {
+      .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* ---------- Testimonials ---------- */
+    .stories__grid { margin-top: 48px; display: grid; gap: 24px; }
+    .story {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .stars { display: flex; gap: 4px; color: #f5a524; }
+    .stars .icon { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+    .story__quote { font-size: 16px; line-height: 1.6; color: var(--ink-2); font-style: normal; }
+    .story__person { display: grid; gap: 12px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .story__name { font-family: var(--font-head); font-weight: 600; font-size: 18px; color: var(--ink); line-height: 1.3; }
+    .story__role { font-size: 13px; color: var(--ink-3); }
+    .story__result {
+      justify-self: start;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: var(--tint-3);
+      color: var(--accent-ink);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    @media (min-width: 900px) {
+      .stories__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    /* ---------- Differentiators ---------- */
+    .diff__grid { margin-top: 48px; display: grid; gap: 16px; }
+    .diff-card {
+      background: var(--tint-2);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+      align-content: start;
+    }
+    .diff-card__num {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      color: var(--accent);
+      display: grid; place-items: center;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 14px;
+      font-variant-numeric: tabular-nums;
+    }
+    .diff-card h3 { font-family: var(--font-head); font-weight: 600; font-size: 20px; line-height: 1.3; color: var(--ink); }
+    .diff-card p { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+    .closing {
+      margin-top: 16px;
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: grid;
+      gap: 24px;
+    }
+    .closing__row { display: grid; gap: 20px; align-items: center; }
+    .closing__mark {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--accent);
+      display: grid; place-items: center;
+      color: #fff;
+    }
+    .closing__quote { font-family: var(--font-head); font-weight: 600; font-size: 20px; line-height: 1.45; color: #edf0ff; }
+    .closing .btn { justify-self: start; }
+    @media (min-width: 768px) {
+      .diff__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      .diff__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .closing { grid-template-columns: 1fr auto; padding: 40px; }
+      .closing__row { grid-template-columns: auto 1fr; }
+    }
+
+    /* ---------- Pricing ---------- */
+    .pricing__grid { margin-top: 48px; display: grid; gap: 24px; align-items: stretch; }
+    .plan {
+      position: relative;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .plan--featured {
+      border: 2px solid var(--accent);
+      padding: 35px 31px;
+    }
+    .plan__badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .plan__label { font-size: 13px; font-weight: 600; color: var(--ink-3); }
+    .plan__price { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+    .plan__amount {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(44px, 5vw, 56px);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .plan--featured .plan__amount { color: var(--accent); }
+    .plan__per { font-size: 14px; color: var(--ink-3); }
+    .plan__list { display: grid; gap: 12px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .plan__list li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+    .plan__list .icon { color: var(--accent); margin-top: 2px; }
+    .plan__cta { margin-top: auto; }
+    @media (min-width: 900px) {
+      .pricing__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .plan--featured { transform: translateY(-12px); }
+    }
+
+    /* ---------- Consultation form ---------- */
+    .consult { padding-left: var(--gutter); padding-right: var(--gutter); }
+    .consult__card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--surface);
+      border-radius: 24px;
+      box-shadow: var(--shadow-float);
+      padding: 32px 24px;
+      display: grid;
+      gap: 32px;
+    }
+    .consult__head { display: grid; gap: 12px; text-align: center; }
+    .consult__head p { color: var(--ink-2); }
+    .form { display: grid; gap: 20px; }
+    .form__row { display: grid; gap: 20px; }
+    .field { display: grid; gap: 8px; }
+    .field label { font-size: 14px; font-weight: 600; color: var(--ink-2); }
+    .field label .req { color: var(--accent); }
+    .field input {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      font: inherit;
+      font-size: 16px;
+      color: var(--ink);
+      background: var(--tint-2);
+      border: 1px solid transparent;
+      border-radius: var(--radius-sm);
+      transition: border-color .2s ease, background-color .2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .field input::placeholder { color: #737686; }
+    .field input:hover { background: var(--tint-3); }
+    .field input:focus { outline: none; background: var(--surface); border-color: var(--accent-bright); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+    .field input[aria-invalid="true"] { border-color: #b3261e; background: #fdf1f0; }
+    .field__error { font-size: 13px; color: #b3261e; min-height: 0; }
+    .form__submit { margin-top: 4px; }
+    .form__assure {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 14px; color: var(--ink-3); text-align: center;
+    }
+    .form__status {
+      display: none;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .form__status.is-visible { display: block; }
+    .form__status--ok { background: var(--tint-4); color: var(--accent-ink); }
+    .form__status--error { background: #fdf1f0; color: #8a1c17; }
+    .form__status strong { display: block; font-family: var(--font-head); font-size: 17px; margin-bottom: 4px; }
+
+    @media (min-width: 640px) {
+      .consult__card { padding: 40px; }
+      .form__row { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 1024px) {
+      .consult { padding-left: 0; padding-right: 0; }
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq__list { margin-top: 48px; display: grid; gap: 8px; max-width: 800px; margin-left: auto; margin-right: auto; width: 100%; }
+    .faq-item {
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 56px;
+      padding: 18px 20px;
+      cursor: pointer;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 17px;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary .icon { color: var(--ink-3); transition: transform .25s ease; }
+    .faq-item[open] summary .icon { transform: rotate(180deg); }
+    .faq-item__body { padding: 0 20px 20px; color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+    .faq-item summary:hover { color: var(--accent); }
+
+    @media (min-width: 768px) {
+      .faq-item summary { font-size: 20px; padding: 20px 24px; }
+      .faq-item__body { padding: 0 24px 24px; }
+    }
+
+    /* ---------- Final CTA ---------- */
+    .final {
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+    }
+    .final__inner { display: grid; gap: 20px; justify-items: center; max-width: 720px; margin: 0 auto; }
+    .final .eyebrow { color: var(--tint-3); margin: 0; }
+    .final .h2 { color: #fff; font-size: clamp(36px, 6vw, 56px); line-height: 1.1; }
+    .final p { color: var(--tint-4); font-size: 18px; line-height: 1.6; max-width: 576px; }
+    .final .btn--primary { background: var(--accent-bright); }
+    .final .btn--primary:hover { background: var(--accent); }
+    .final__meta { font-size: 13px; color: #c3c6d7; font-weight: 500; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { padding: 32px 0; background: var(--ink); color: #c3c6d7; font-size: 14px; }
+    .site-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+    .site-footer a { color: #c3c6d7; }
+
+    /* ---------- Responsive layout ---------- */
+    @media (min-width: 900px) {
+      .hero { padding-top: 56px; }
+      .hero__grid { grid-template-columns: 7fr 5fr; gap: 64px; }
+      .about__grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .about__media { order: -1; }
+    }
+    @media (min-width: 1024px) {
+      .hero__grid { grid-template-columns: 7fr 5fr; }
+      .hero__visual { padding: 32px 24px; }
+      .about__media { order: 0; }
+    }
+
+    /* Phone-sized tweaks */
+    @media (max-width: 380px) {
+      .float-card--top { width: 56%; padding: 12px; }
+      .float-card--bottom { width: 92%; padding: 12px; }
+      .float-card__value { font-size: 20px; }
+      .btn { width: 100%; }
+      .hero__actions .btn { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Inline SVG icon set (one stroke weight throughout) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.5 6 .9-4.4 4.2 1 6-5.3-2.8-5.3 2.8 1-6-4.4-4.2 6-.9z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-network" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v6M8 8h.01M12 16v-4a2 2 0 0 1 4 0v4"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M9.5 12l1.8 1.8 3.2-3.4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-quote" viewBox="0 0 24 24"><path d="M7 7h4v4c0 3-1.5 5-4 6M14 7h4v4c0 3-1.5 5-4 6"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+  </svg>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header class="site-header" id="top">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="NOVA Career Studio home">
+        <span class="brand__mark" aria-hidden="true">N</span>
+        <span>NOVA <span class="brand__sub">Career Studio</span></span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="btn btn--primary nav__cta" href="#consultation">Book a free consultation</a>
+
+      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav" id="navToggle">
+        <svg class="icon" id="navIcon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+
+    <div class="nav__panel" id="mobile-nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn--primary" href="#consultation">Book a free consultation</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <span class="pill"><span class="pill__dot" aria-hidden="true"></span>Your next chapter starts here</span>
+
+          <div class="hero__headline">
+            <h1 class="h1" id="hero-title">
+              Stop Applying.
+              <span class="accent">Start Standing Out.</span>
+            </h1>
+            <p class="hero__support">Your career deserves a better strategy.</p>
+          </div>
+
+          <p class="hero__desc">From your first resume to your next big opportunity, we help you show up with confidence and get noticed for the right reasons.</p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#consultation">
+              Book a free consultation
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a class="btn btn--secondary" href="#services">Explore our services</a>
+          </div>
+
+          <ul class="checklist">
+            <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Personalized guidance</li>
+            <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Real strategies</li>
+            <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Meaningful progress</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__image">
+            <img src="assets/hero.jpg" alt="A NOVA career strategist reviewing a resume with a client" width="479" height="599" fetchpriority="high">
+            <span class="image-badge">
+              <svg class="icon icon--xs" aria-hidden="true"><use href="#i-compass"/></svg>
+              Executive Strategy Studio
+            </span>
+          </div>
+
+          <div class="float-card float-card--top" aria-label="ATS score 94 out of 100">
+            <div class="float-card__row">
+              <span class="float-card__label">ATS optimized</span>
+            </div>
+            <div class="float-card__value" style="margin-top:6px">94<small>/100</small></div>
+            <div class="meter" aria-hidden="true"><span></span></div>
+            <div class="float-card__note">Score benchmark: Top 3%</div>
+          </div>
+
+          <div class="float-card float-card--bottom">
+            <div class="float-card__icon" aria-hidden="true">
+              <svg class="icon" aria-hidden="true"><use href="#i-trend"/></svg>
+            </div>
+            <div>
+              <div class="float-card__stat">3.4x interview callbacks</div>
+              <div class="float-card__sub">Average across 850+ candidates</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section section--tint" id="about" aria-labelledby="about-title">
+      <div class="wrap about__grid">
+        <div class="about__copy">
+          <div>
+            <span class="eyebrow">About NOVA</span>
+            <h2 class="h2" id="about-title">A little direction can change everything.</h2>
+          </div>
+
+          <p class="about__tagline">Your career journey shouldn't be a guessing game.</p>
+
+          <div class="body">
+            <p>At NOVA Career Studio, we believe talent deserves to be noticed. But sometimes, having the right skills isn't enough. Knowing how to present them makes all the difference.</p>
+            <p>Founded by Riya Mehta, NOVA helps ambitious students and professionals navigate the job market with clarity and confidence. From building a resume that gets attention to preparing for interviews that matter, we're here to make your next move a smarter one.</p>
+            <p class="about__closing">Because your potential deserves more than another unanswered application.</p>
+          </div>
+
+          <div class="founder">
+            <div class="founder__avatar" aria-hidden="true">RM</div>
+            <div>
+              <div class="founder__name">Riya Mehta</div>
+              <div class="founder__role">Founder &amp; Principal Career Strategist, Mumbai</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__media">
+          <div class="about__image">
+            <img src="assets/about.jpg" alt="A NOVA mentorship session in progress" width="580" height="435" loading="lazy">
+          </div>
+          <div class="about__caption">
+            <span>Mentorship session at our Mumbai studio</span>
+            <span class="tag">In-person &amp; virtual</span>
+          </div>
+          <div class="stat-card" aria-hidden="false">
+            <div class="stat-card__value">10+ Years</div>
+            <div class="stat-card__label">Industry mentorship depth</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Pillars of impact</span>
+          <h2 class="h2" id="services-title">Everything you need to make your next move.</h2>
+          <p class="lead">Practical guidance, personalized strategies, and the right tools to move your career forward.</p>
+        </div>
+
+        <div class="services__grid">
+          <article class="card">
+            <div class="card__top">
+              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></div>
+              <span class="index">01</span>
+            </div>
+            <div class="card__body">
+              <h3 class="h3">Resume Makeover</h3>
+              <p>Turn your experience into a resume that gets noticed. We help you highlight your strengths, communicate your value, and make every word count.</p>
+            </div>
+            <div class="card__foot">
+              <a class="text-link" href="#consultation">Learn more <svg class="icon icon--xs" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <span class="card__note">ATS restructure included</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg></div>
+              <span class="index">02</span>
+            </div>
+            <div class="card__body">
+              <h3 class="h3">LinkedIn Optimization</h3>
+              <p>Make your first impression count, even before the interview. Build a profile that tells your story and attracts the right opportunities.</p>
+            </div>
+            <div class="card__foot">
+              <a class="text-link" href="#consultation">Learn more <svg class="icon icon--xs" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <span class="card__note">Profile SEO and positioning</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-mic"/></svg></div>
+              <span class="index">03</span>
+            </div>
+            <div class="card__body">
+              <h3 class="h3">Interview Preparation</h3>
+              <p>Walk into your next interview knowing what to say and how to say it. Practice real-world questions and develop the confidence to own the conversation.</p>
+            </div>
+            <div class="card__foot">
+              <a class="text-link" href="#consultation">Learn more <svg class="icon icon--xs" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <span class="card__note">Live mock drills</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <div class="icon-tile"><svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg></div>
+              <span class="index">04</span>
+            </div>
+            <div class="card__body">
+              <h3 class="h3">Career Clarity Sessions</h3>
+              <p>Unsure about your next step? Let's figure it out together. Get personalized guidance to identify your strengths and build a career direction that makes sense.</p>
+            </div>
+            <div class="card__foot">
+              <a class="text-link" href="#consultation">Learn more <svg class="icon icon--xs" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <span class="card__note">1-on-1 strategic mapping</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SUCCESS STORIES ============ -->
+    <section class="section section--tint" id="stories" aria-labelledby="stories-title">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Proven trajectories</span>
+          <h2 class="h2" id="stories-title">Real people. Real progress.</h2>
+          <p class="lead">Every success starts with someone believing they're capable of more.</p>
+        </div>
+
+        <div class="stories__grid">
+          <figure class="story" style="margin:0">
+            <div>
+              <div class="stars" role="img" aria-label="5 out of 5 stars">
+                <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
+              </div>
+              <blockquote class="story__quote" style="margin:20px 0 0">"I'd been applying for weeks without hearing back. NOVA completely changed how I presented my experience. I finally started getting interview calls."</blockquote>
+            </div>
+            <figcaption class="story__person">
+              <div>
+                <div class="story__name">Aarav Sharma</div>
+                <div class="story__role">Software Engineer</div>
+              </div>
+              <span class="story__result">Landed senior role at FinTech</span>
+            </figcaption>
+          </figure>
+
+          <figure class="story" style="margin:0">
+            <div>
+              <div class="stars" role="img" aria-label="5 out of 5 stars">
+                <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
+              </div>
+              <blockquote class="story__quote" style="margin:20px 0 0">"The mock interview sessions helped me understand where I was going wrong. I walked into my next interview with a completely different level of confidence."</blockquote>
+            </div>
+            <figcaption class="story__person">
+              <div>
+                <div class="story__name">Sneha Kapoor</div>
+                <div class="story__role">Recent Graduate</div>
+              </div>
+              <span class="story__result">Offered 2 campus offers</span>
+            </figcaption>
+          </figure>
+
+          <figure class="story" style="margin:0">
+            <div>
+              <div class="stars" role="img" aria-label="5 out of 5 stars">
+                <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
+              </div>
+              <blockquote class="story__quote" style="margin:20px 0 0">"I knew I wanted a change but had no idea where to begin. The guidance I received helped me identify my strengths and take that first step."</blockquote>
+            </div>
+            <figcaption class="story__person">
+              <div>
+                <div class="story__name">Rohan Mehta</div>
+                <div class="story__role">Marketing Professional</div>
+              </div>
+              <span class="story__result">Career transition to product marketing</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Our differential</span>
+          <h2 class="h2" id="why-title">Not just career advice. A strategy that works.</h2>
+        </div>
+
+        <div class="diff__grid">
+          <article class="diff-card">
+            <div class="diff-card__num" aria-hidden="true">01</div>
+            <div>
+              <h3>Personalized approach</h3>
+            </div>
+            <p>No generic templates. Every recommendation is tailored directly to your distinct background and ambitions.</p>
+          </article>
+
+          <article class="diff-card">
+            <div class="diff-card__num" aria-hidden="true">02</div>
+            <div>
+              <h3>Industry-relevant insights</h3>
+            </div>
+            <p>Understand what modern talent teams look for and learn precisely how to position your narrative.</p>
+          </article>
+
+          <article class="diff-card">
+            <div class="diff-card__num" aria-hidden="true">03</div>
+            <div>
+              <h3>Practical guidance</h3>
+            </div>
+            <p>Actionable feedback and structural revisions that you can deploy in actual recruitment pipelines immediately.</p>
+          </article>
+
+          <article class="diff-card">
+            <div class="diff-card__num" aria-hidden="true">04</div>
+            <div>
+              <h3>Confidence that shows</h3>
+            </div>
+            <p>Develop the composure, body language, and articulateness needed to command high-stakes executive rooms.</p>
+          </article>
+        </div>
+
+        <div class="closing">
+          <div class="closing__row">
+            <div class="closing__mark" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg></div>
+            <p class="closing__quote">"We don't promise overnight success. We help you build the confidence and strategy to create it."</p>
+          </div>
+          <a class="btn btn--primary" href="#consultation">Start conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section section--tint" id="pricing" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Simple, transparent investment</span>
+          <h2 class="h2" id="pricing-title">The right support for your next move.</h2>
+          <p class="lead">Choose the guidance that fits where you are and where you want to go.</p>
+        </div>
+
+        <div class="pricing__grid">
+          <article class="plan">
+            <div>
+              <div class="plan__label">Plan 01</div>
+              <h3 class="h3" style="margin-top:8px">Resume Refresh</h3>
+            </div>
+            <div class="plan__price">
+              <span class="plan__amount">₹999</span>
+              <span class="plan__per">one-time</span>
+            </div>
+            <ul class="plan__list">
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Resume review and restructuring</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>ATS-friendly formatting</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>One thorough revision</li>
+            </ul>
+            <a class="btn btn--tint plan__cta" href="#consultation">Choose Resume Refresh</a>
+          </article>
+
+          <article class="plan plan--featured">
+            <span class="plan__badge">Most popular</span>
+            <div>
+              <div class="plan__label">Plan 02</div>
+              <h3 class="h3" style="margin-top:8px">Career Boost</h3>
+            </div>
+            <div class="plan__price">
+              <span class="plan__amount">₹2,499</span>
+              <span class="plan__per">complete</span>
+            </div>
+            <ul class="plan__list">
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Complete resume makeover</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>LinkedIn profile optimization</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>One personalized consultation</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Two revision cycles</li>
+            </ul>
+            <a class="btn btn--primary plan__cta" href="#consultation">Get started with Career Boost</a>
+          </article>
+
+          <article class="plan">
+            <div>
+              <div class="plan__label">Plan 03</div>
+              <h3 class="h3" style="margin-top:8px">Career Accelerator</h3>
+            </div>
+            <div class="plan__price">
+              <span class="plan__amount">₹4,999</span>
+              <span class="plan__per">full cohort</span>
+            </div>
+            <ul class="plan__list">
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Everything in Career Boost</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Two mock interview sessions</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Personalized career roadmap</li>
+              <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Priority one-on-one support</li>
+            </ul>
+            <a class="btn btn--tint plan__cta" href="#consultation">Enroll in Career Accelerator</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONSULTATION FORM ============ -->
+    <section class="section consult" id="consultation" aria-labelledby="consult-title">
+      <div class="consult__card">
+        <div class="consult__head">
+          <span class="eyebrow">Start today</span>
+          <h2 class="h2" id="consult-title">Let's talk about your next move.</h2>
+          <p>Tell us a little about yourself. We'll help you figure out what comes next.</p>
+        </div>
+
+        <form class="form" id="consultForm" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="fName">Full name <span class="req" aria-hidden="true">*</span></label>
+              <input id="fName" name="name" type="text" autocomplete="name" placeholder="e.g. Priya Iyer" required aria-describedby="fName-err">
+              <span class="field__error" id="fName-err" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="fEmail">Email address <span class="req" aria-hidden="true">*</span></label>
+              <input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="priya@example.com" required aria-describedby="fEmail-err">
+              <span class="field__error" id="fEmail-err" aria-live="polite"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="fPhone">Phone number <span class="req" aria-hidden="true">*</span></label>
+            <input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required aria-describedby="fPhone-err">
+            <span class="field__error" id="fPhone-err" aria-live="polite"></span>
+          </div>
+
+          <button class="btn btn--primary btn--block form__submit" type="submit" id="submitBtn">
+            Let's get started
+            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
+
+          <div class="form__status" id="formStatus" role="status" aria-live="polite"></div>
+
+          <p class="form__assure">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-shield"/></svg>
+            No pressure. Just a conversation about your future.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section section--tint" id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">Clear insights</span>
+          <h2 class="h2" id="faq-title">Questions? We've got answers.</h2>
+        </div>
+
+        <div class="faq__list">
+          <details class="faq-item">
+            <summary>Who can benefit from NOVA's services? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-item__body">Ambitious students and working professionals who want a clearer path through the job market, whether they are writing their first resume or preparing for a bigger move.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Do you help with ATS-friendly resumes? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-item__body">Yes. ATS-friendly formatting and a structural restructure are part of the Resume Refresh and Resume Makeover services.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Are consultations conducted online? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-item__body">Sessions are available both in person at our Mumbai studio and virtually, so you can work with us from wherever you are.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I book an individual service instead of a package? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-item__body">Yes. Each service can be requested on its own. Use the consultation form and tell us which area you want help with.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How do I get started? <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+            <div class="faq-item__body">Fill in the short form above with your name, email and phone number. We'll get in touch to talk through where you are and what comes next.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="section final" aria-labelledby="final-title">
+      <div class="wrap">
+        <div class="final__inner">
+          <span class="eyebrow">Your moment</span>
+          <h2 class="h2" id="final-title">The next opportunity could be yours.</h2>
+          <p>Don't let uncertainty hold you back. Take the first step towards a career that reflects your potential.</p>
+          <a class="btn btn--primary" href="#consultation">
+            Book your free consultation
+            <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <p class="final__meta">Tailored guidance &bull; Direct mentorship &bull; Confidential &amp; 100% online</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>&copy; <span id="year">2026</span> NOVA Career Studio</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    /* ---------- Configuration ---------- */
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzuGPIJzfmuTHUtn225dnE9yfOxTPWHSymVSQ9UiTbwqCh83Va2JjddnTSgL1WN0oDrTQ/exec";
+
+    /* ---------- Year ---------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ---------- Header shadow on scroll ---------- */
+    const header = document.querySelector('.site-header');
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 4);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- Mobile navigation ---------- */
+    const toggle = document.getElementById('navToggle');
+    const panel = document.getElementById('mobile-nav');
+    const navIcon = document.getElementById('navIcon');
+
+    function setNav(open) {
+      panel.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      navIcon.querySelector('use').setAttribute('href', open ? '#i-close' : '#i-menu');
+    }
+
+    toggle.addEventListener('click', () => setNav(!panel.classList.contains('is-open')));
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setNav(false)));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && panel.classList.contains('is-open')) {
+        setNav(false);
+        toggle.focus();
+      }
+    });
+    window.matchMedia('(min-width: 900px)').addEventListener('change', e => {
+      if (e.matches) setNav(false);
+    });
+
+    /* ---------- Consultation form ---------- */
+    const form = document.getElementById('consultForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusBox = document.getElementById('formStatus');
+    const fields = {
+      name: document.getElementById('fName'),
+      email: document.getElementById('fEmail'),
+      phone: document.getElementById('fPhone')
+    };
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const PHONE_RE = /^[+()\-\s\d]{7,20}$/;
+
+    function setError(input, message) {
+      const err = document.getElementById(input.id + '-err');
+      err.textContent = message || '';
+      input.setAttribute('aria-invalid', message ? 'true' : 'false');
+    }
+
+    function validate() {
+      const values = {
+        name: fields.name.value.trim(),
+        email: fields.email.value.trim(),
+        phone: fields.phone.value.trim()
+      };
+      let ok = true;
+      let firstBad = null;
+
+      const checks = [
+        ['name', values.name.length > 0, 'Please enter your name.'],
+        ['email', EMAIL_RE.test(values.email), 'Please enter a valid email address.'],
+        ['phone', PHONE_RE.test(values.phone), 'Please enter a valid phone number.']
+      ];
+
+      checks.forEach(([key, pass, msg]) => {
+        setError(fields[key], pass ? '' : msg);
+        if (!pass) {
+          ok = false;
+          if (!firstBad) firstBad = fields[key];
+        }
+      });
+
+      if (firstBad) firstBad.focus();
+      return ok ? values : null;
+    }
+
+    function showStatus(type, title, text) {
+      statusBox.className = 'form__status is-visible form__status--' + type;
+      statusBox.innerHTML = '';
+      const heading = document.createElement('strong');
+      heading.textContent = title;
+      const body = document.createElement('span');
+      body.textContent = text;
+      statusBox.append(heading, body);
+    }
+
+    function setBusy(busy) {
+      submitBtn.disabled = busy;
+      submitBtn.firstChild.textContent = busy ? 'Sending… ' : "Let's get started ";
+    }
+
+    function showSuccess() {
+      form.reset();
+      Object.keys(fields).forEach(k => setError(fields[k], ''));
+      showStatus('ok', 'Thank you. We have your details.', 'Our team will reach out shortly to set up your consultation.');
+      setBusy(false);
+    }
+
+    function showError() {
+      showStatus('error', 'Something went wrong.', 'Your details could not be sent. Please check your connection and try again.');
+      setBusy(false);
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      statusBox.className = 'form__status';
+
+      const data = validate();
+      if (!data) return;
+
+      const name = data.name;
+      const email = data.email;
+      const phone = data.phone;
+
+      const url = SCRIPT_URL + "?" + new URLSearchParams({
+        name,
+        email,
+        phone
+      });
+
+      setBusy(true);
+
+      fetch(url, {
+        method: "GET",
+        mode: "no-cors"
+      })
+        .then(() => showSuccess())
+        .catch(() => showError());
+    });
+
+    Object.values(fields).forEach(input => {
+      input.addEventListener('input', () => {
+        if (input.getAttribute('aria-invalid') === 'true') setError(input, '');
+      });
+    });
+  </script>
+</body>
+</html>
