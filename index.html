@@ -743,6 +743,36 @@
       .hero__actions .btn { width: 100%; }
     }
 
+    /* ---------- Floating consultation button ---------- */
+    .float-cta {
+      position: fixed;
+      right: max(16px, env(safe-area-inset-right, 0px));
+      bottom: max(16px, env(safe-area-inset-bottom, 0px));
+      z-index: 60;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 52px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      box-shadow: var(--shadow-float);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease, background-color .2s ease;
+    }
+    .float-cta.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+    .float-cta:hover { background: #003a9e; color: #fff; text-decoration: none; }
+    .float-cta .icon { width: 18px; height: 18px; }
+    @media (max-width: 380px) {
+      .float-cta { padding: 12px 16px; font-size: 14px; }
+      .float-cta__label { display: none; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -1263,9 +1293,37 @@
     </div>
   </footer>
 
+  <a class="float-cta" id="floatCta" href="#consultation" aria-label="Go to the consultation form">
+    <span class="float-cta__label">Book a free consultation</span>
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+  </a>
+
   <script>
     /* ---------- Configuration ---------- */
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzuGPIJzfmuTHUtn225dnE9yfOxTPWHSymVSQ9UiTbwqCh83Va2JjddnTSgL1WN0oDrTQ/exec";
+
+    /* ---------- Floating consultation button ---------- */
+    const floatCta = document.getElementById('floatCta');
+    const consultSection = document.getElementById('consultation');
+    const heroSection = document.querySelector('.hero');
+    let pastHero = false;
+    let formInView = false;
+
+    function updateFloatCta() {
+      floatCta.classList.toggle('is-visible', pastHero && !formInView);
+    }
+
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      updateFloatCta();
+    });
+    heroObserver.observe(heroSection);
+
+    const formObserver = new IntersectionObserver(([entry]) => {
+      formInView = entry.isIntersecting;
+      updateFloatCta();
+    }, { threshold: 0.2 });
+    formObserver.observe(consultSection);
 
     /* ---------- Year ---------- */
     document.getElementById('year').textContent = new Date().getFullYear();
