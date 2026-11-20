@@ -725,7 +725,7 @@
     @media (min-width: 900px) {
       .hero { padding-top: 56px; }
       .hero__grid { grid-template-columns: 1fr; max-width: 760px; }
-      .about__grid { grid-template-columns: 1fr; max-width: 760px; }
+      .about__grid { grid-template-columns: 1fr; }
     }
 
     /* Phone-sized tweaks */
@@ -735,6 +735,43 @@
       .float-card__value { font-size: 20px; }
       .btn { width: 100%; }
       .hero__actions .btn { width: 100%; }
+    }
+
+    /* ---------- Hero stats and about layout ---------- */
+    .stats { margin-top: 64px; display: grid; gap: 16px; }
+    .stat {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 28px;
+      display: grid;
+      gap: 8px;
+    }
+    .stat__value {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 40px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat__label { font-size: 15px; line-height: 1.5; color: var(--ink-3); }
+    @media (min-width: 768px) {
+      .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (min-width: 900px) {
+      .about__copy {
+        display: grid;
+        grid-template-columns: 5fr 6fr;
+        column-gap: 80px;
+        row-gap: 20px;
+        align-items: start;
+      }
+      .about__head { grid-column: 1; grid-row: 1; }
+      .about__tagline { grid-column: 1; grid-row: 2; }
+      .about__copy .founder { grid-column: 1; grid-row: 3; }
+      .about__copy .body { grid-column: 2; grid-row: 1 / span 3; }
     }
 
     /* ---------- Floating consultation button ---------- */
@@ -857,7 +894,21 @@
             <li><svg class="icon icon--sm" aria-hidden="true"><use href="#i-check"/></svg>Meaningful progress</li>
           </ul>
         </div>
+      </div>
 
+      <div class="wrap stats">
+        <div class="stat">
+          <div class="stat__value">3.4x</div>
+          <div class="stat__label">Interview callbacks, averaged across 850+ candidates</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">94/100</div>
+          <div class="stat__label">ATS optimized score, in the top 3% benchmark</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">10+ years</div>
+          <div class="stat__label">Industry mentorship depth</div>
+        </div>
       </div>
     </section>
 
@@ -865,7 +916,7 @@
     <section class="section section--tint" id="about" aria-labelledby="about-title">
       <div class="wrap about__grid">
         <div class="about__copy">
-          <div>
+          <div class="about__head">
             <span class="eyebrow">About NOVA</span>
             <h2 class="h2" id="about-title">A little direction can change everything.</h2>
           </div>
